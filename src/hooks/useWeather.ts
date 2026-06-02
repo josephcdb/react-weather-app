@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { searchCity } from "../services/geocodingApi";
-import { getWeatherForecast } from "../services/weatherApi";
+import { searchCity, weatherForecast } from "../services/geocodingApi";
 import type { Weather } from "../types/weather";
 
 export const useWeather = (city: string) => {
@@ -15,7 +14,7 @@ export const useWeather = (city: string) => {
         setLoading(true);
 
         const location = await searchCity(city);
-        const forecast = await getWeatherForecast(location.lat, location.lon);
+        const forecast = await weatherForecast(location.lat, location.lon);
         const data = forecast?.weather ?? [];
 
         setWeather(data);
