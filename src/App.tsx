@@ -13,30 +13,23 @@ function App() {
   const { weather, loading } = useWeather(city);
 
   // Convert hourly forecast to daily forecast
-  const dailyForecast = Object.values(
-  (weather ?? []).reduce(
+  const dailyForecast = Object.values((weather ?? []).reduce(
     (acc: Record<string, Weather>, item: Weather) => {
       const day = item.timestamp.split("T")[0];
 
       if (!acc[day]) {
         acc[day] = item;
       }
-
       return acc;
     },
     {}
-  )
-);
+  ));
 
-  const getDayLabel = (
-    timestamp: string,
-    index: number
-  ) => {
+  const getDayLabel = ( timestamp: string, index: number) => {
     if (index === 0) return "Today";
     if (index === 1) return "Tomorrow";
 
-    return new Date(timestamp).toLocaleDateString(
-      "en-US",
+    return new Date(timestamp).toLocaleDateString("de-DE",
       {
         weekday: "long",
       }
@@ -69,10 +62,7 @@ function App() {
         {dailyForecast.map((item: Weather, index: number) => (
           <WeatherCard
             key={item.timestamp}
-            date={getDayLabel(
-              item.timestamp,
-              index
-            )}
+            date={getDayLabel(item.timestamp, index)}
             temp={item.temperature}
             condition={item.condition}
           />

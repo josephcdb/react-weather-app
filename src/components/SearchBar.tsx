@@ -4,23 +4,16 @@ interface SearchBarProps {
   onSearch: () => void;
 }
 
-export const SearchBar = ({
-  input,
-  onInputChange,
-  onSearch,
-}: SearchBarProps) => {
+export const SearchBar = ({ input, onInputChange, onSearch }: SearchBarProps) => {
   return (
     <div>
       <input
+        id="city-search"
+        name="city"
         value={input}
-        onChange={(e) =>
-          onInputChange(e.target.value)
-        }
+        onChange={(e) => onInputChange(e.target.value)}
       />
-
-      <button onClick={onSearch}>
-        Search
-      </button>
+      <button onClick={onSearch}>Search</button>
     </div>
   );
 };

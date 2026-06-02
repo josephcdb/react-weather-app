@@ -1,8 +1,6 @@
-// services/geocodingApi.ts
 export const searchCity = async (city: string) => {
   const response = await fetch(
-    `https://nominatim.openstreetmap.org/search?q=${city},Germany&format=json&limit=1`
-  );
+    `https://nominatim.openstreetmap.org/search?q=${city},Germany&format=json&limit=1`);
 
   const data = await response.json();
 

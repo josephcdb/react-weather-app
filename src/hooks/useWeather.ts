@@ -1,4 +1,3 @@
-// hooks/useWeather.ts
 import { useState, useEffect } from "react";
 import { searchCity } from "../services/geocodingApi";
 import { getWeatherForecast } from "../services/weatherApi";
@@ -16,24 +15,18 @@ export const useWeather = (city: string) => {
         setLoading(true);
 
         const location = await searchCity(city);
-        const forecast = await getWeatherForecast(
-          location.lat,
-          location.lon
-        );
-        
+        const forecast = await getWeatherForecast(location.lat, location.lon);
         const data = forecast?.weather ?? [];
 
         setWeather(data);
       } catch (error) {
-        console.error("Weather fetch failed:", error);
-        setWeather([]); // ✅ prevent undefined state
+          console.error("Weather fetch failed:", error);
+          setWeather([]);
       } finally {
         setLoading(false);
       }
     };
-
     fetchWeather();
   }, [city]);
-
   return { weather, loading };
 };
