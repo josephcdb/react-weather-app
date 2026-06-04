@@ -1,8 +1,4 @@
-interface SearchBarProps {
-  input: string;
-  onInputChange: (value: string) => void;
-  onSearch: () => void;
-}
+import type { SearchBarProps } from "../types/weather";
 
 export const SearchBar = ({ input, onInputChange, onSearch }: SearchBarProps) => {
   return (

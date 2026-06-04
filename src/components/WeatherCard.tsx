@@ -1,8 +1,4 @@
-interface WeatherProps {
-  date: string;
-  temp: number;
-  condition: string;
-}
+import type { WeatherProps } from "../types/weather";
 
 export const WeatherCard = ({ date, temp, condition }: WeatherProps) => {
   return (
