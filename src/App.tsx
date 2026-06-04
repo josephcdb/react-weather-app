@@ -54,7 +54,7 @@ function App() {
 
       {loading && <p>Loading weather...</p>}
 
-      {!loading && dailyForecast.length === 0 && (
+      {!loading && (dailyForecast.length === 0) && (
         <p>No weather data found.</p>
       )}
 
