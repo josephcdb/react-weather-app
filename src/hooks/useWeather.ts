@@ -25,7 +25,12 @@ export const useWeather = (city: string) => {
         setLoading(false);
       }
     };
-    fetchWeather();
+
+    const timeout = setTimeout(() => {
+      fetchWeather();
+    }, 500);
+
+    return () => clearTimeout(timeout);
   }, [city]);
   return { weather, loading };
 };
